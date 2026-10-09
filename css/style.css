@@ -1,0 +1,311 @@
+/* ==========================================================================
+   PALETA DE CORES SOLICITADA:
+   - Azul Escuro: #092347
+   - Verde Água (Teal): #00B4A2
+   - Verde (Sucesso/Acento): #22C55E
+   ========================================================================== */
+
+:root {
+    --azul-escuro: #092347;
+    --azul-card: #103260;
+    --verde-agua: #00B4A2;
+    --verde-sucesso: #22C55E;
+    --texto-claro: #FFFFFF;
+    --texto-escuro: #1E293B;
+    --cinza-fundo: #F1F5F9;
+    --vermelho-erro: #EF4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cinza-fundo);
+    color: var(--texto-escuro);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabecalho */
+.cabecalho {
+    background-color: var(--azul-escuro);
+    color: var(--texto-claro);
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--verde-agua);
+}
+
+.logo span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--texto-claro);
+}
+
+.logo small {
+    color: var(--verde-agua);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.navegacao .link-nav {
+    color: var(--texto-claro);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.navegacao .link-nav:hover,
+.navegacao .link-nav.ativo {
+    background-color: var(--verde-agua);
+    color: var(--azul-escuro);
+}
+
+/* Banner Hero */
+.banner {
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-card));
+    color: var(--texto-claro);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--verde-agua);
+}
+
+.banner p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.banner-imagem img,
+.sobre-imagem img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: contain; /* Mostra a imagem inteira sem cortar */
+    border-radius: 12px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: var(--verde-sucesso);
+    color: var(--texto-claro);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-cta:hover {
+    background-color: var(--verde-agua);
+    color: var(--azul-escuro);
+    transform: scale(1.05);
+}
+
+/* Secao Galeria Interativa */
+.secao-galeria, .secao-formulario {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.secao-galeria h2, .secao-formulario h2 {
+    color: var(--azul-escuro);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.secao-galeria > p, .secao-formulario > p {
+    text-align: center;
+    color: #64748B;
+    margin-bottom: 2rem;
+}
+
+.galeria-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.lista-miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-miniatura {
+    background-color: white;
+    border: 2px solid #E2E8F0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-miniatura:hover {
+    border-color: var(--verde-agua);
+    transform: translateX(5px);
+}
+
+.card-miniatura.ativo {
+    border-color: var(--verde-agua);
+    background-color: #E6F8F6;
+    box-shadow: 0 4px 12px rgba(0, 180, 162, 0.15);
+}
+
+.card-miniatura h3 {
+    color: var(--azul-escuro);
+    font-size: 1.1rem;
+}
+
+.card-miniatura span {
+    color: var(--verde-agua);
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* Painel Destaque */
+.painel-destaque {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(9, 35, 71, 0.1);
+    border-top: 5px solid var(--verde-agua);
+    text-align: center;
+}
+
+.painel-destaque img {
+    width: 100%;
+    max-height: 250px;
+    height: auto;
+    object-fit: contain; /* Mostra a imagem inteira sem cortar */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.painel-destaque h3 {
+    color: var(--azul-escuro);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.painel-destaque p {
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Formulario */
+.formulario {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid var(--verde-sucesso);
+}
+
+.campo {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--azul-escuro);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campo input, .campo select, .campo textarea {
+    padding: 0.8rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    border-color: var(--verde-agua);
+}
+
+.btn-enviar {
+    width: 100%;
+    background-color: var(--azul-escuro);
+    color: var(--texto-claro);
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: var(--verde-agua);
+    color: var(--azul-escuro);
+}
+
+/* Mensagens do JavaScript */
+.mensagem-status {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.mensagem-status.sucesso {
+    background-color: #DCFCE7;
+    color: #166534;
+    border: 1px solid var(--verde-sucesso);
+}
+
+.mensagem-status.erro {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid var(--vermelho-erro);
+}
+
+.oculto {
+    display: none;
+}
+
+/* Rodape */
+.rodape {
+    margin-top: auto;
+    background-color: var(--azul-escuro);
+    color: var(--texto-claro);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--verde-agua);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .galeria-container {
+        grid-template-columns: 1fr;
+    }
+}
