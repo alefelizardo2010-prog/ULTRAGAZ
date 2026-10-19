@@ -309,3 +309,43 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Estilos da busca de CEP */
+.cep-status {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.cep-status.carregando {
+    color: #475569;
+}
+
+.cep-status.sucesso {
+    color: #166534;
+}
+
+.cep-status.erro {
+    color: #991B1B;
+}
+
+.linha-campos {
+    display: flex;
+    gap: 1rem;
+}
+
+.linha-campos .campo {
+    flex: 1;
+}
+
+.linha-campos .campo-uf {
+    flex: 0 0 90px;
+}
+
+@media (max-width: 768px) {
+    .linha-campos {
+        flex-direction: column;
+        gap: 0;
+    }
+}
