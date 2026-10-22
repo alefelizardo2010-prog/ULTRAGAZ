@@ -1,4 +1,3 @@
 <?php
-header("Location: pages php/listar.php");
+header("Location: index.html");
 exit;
-?>
