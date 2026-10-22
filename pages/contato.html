@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/script.js" defer></script>
 </head>
+
 <body>
+
     <header class="cabecalho">
         <div class="logo">
             <span>Ultragaz</span>
         </div>
         <nav class="navegacao">
             <a href="../index.html" class="link-nav">Início</a>
+            <a href="projetos.html" class="link-nav">Produtos e Serviços</a>
             <a href="contato.html" class="link-nav ativo">Peça Seu Gás / Contato</a>
         </nav>
     </header>
@@ -24,62 +27,92 @@
             <h2>Peça seu Gás Azul ou Tire Dúvidas</h2>
             <p>Preencha os dados abaixo para solicitar seu atendimento rápido:</p>
 
-            <form id="form-contato" class="formulario">
+            <form id="form-contato" class="formulario" action="../php/salvar.php" method="POST" novalidate>
                 <div class="campo">
                     <label for="nome">Nome Completo:</label>
-                    <input type="text" id="nome">
+                    <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo">
                 </div>
 
                 <div class="campo">
                     <label for="telefone">Telefone / WhatsApp:</label>
-                    <input type="tel" id="telefone" placeholder="(19) 99999-9999">
+                    <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(19) 99999-9999">
                 </div>
 
                 <div class="campo">
                     <label for="produto">Selecione o Produto:</label>
-                    <select id="produto">
+                    <select id="produto" name="produto">
                         <option value="">-- Selecione uma opção --</option>
                         <option value="p13">Botijão P13 (Residencial)</option>
-                        <option value="p20">Botijão P20 (Empilhadeira)</option>
+                        <option value="p20">Cilindro P20 (Empilhadeira)</option>
                         <option value="p45">Cilindro P45 (Comercial)</option>
                     </select>
                 </div>
 
+                <div class="linha-campos">
+                    <div class="campo campo-uf">
+                        <label for="quantidade">Qtd.:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" max="20" value="1">
+                    </div>
+                    <div class="campo">
+                        <label for="pagamento">Forma de pagamento:</label>
+                        <select id="pagamento" name="pagamento">
+                            <option value="">-- Selecione --</option>
+                            <option value="dinheiro">Dinheiro na entrega</option>
+                            <option value="pix">Pix na entrega</option>
+                            <option value="cartao">Cartão na entrega</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="resumo-pedido" id="resumo-pedido" aria-live="polite">Selecione um produto para ver o valor.</div>
+
                 <div class="campo">
                     <label for="cep">CEP:</label>
-                    <input type="text" id="cep" maxlength="9"
-                           inputmode="numeric" placeholder="00000-000">
-                    <div id="cep-status" class="cep-status"
-                         aria-live="polite"></div>
+                    <input type="text" id="cep" name="cep" inputmode="numeric" maxlength="9" placeholder="00000-000">
+                    <!-- Feedback da busca de CEP (preenchido via JS) -->
+                    <div id="cep-status" class="cep-status" aria-live="polite"></div>
                 </div>
 
                 <div class="campo">
                     <label for="rua">Rua:</label>
-                    <input type="text" id="rua">
+                    <input type="text" id="rua" name="rua" placeholder="Preenchida automaticamente pelo CEP">
                 </div>
 
                 <div class="campo">
                     <label for="bairro">Bairro:</label>
-                    <input type="text" id="bairro">
+                    <input type="text" id="bairro" name="bairro" placeholder="Preenchido automaticamente pelo CEP">
                 </div>
 
                 <div class="linha-campos">
                     <div class="campo">
                         <label for="cidade">Cidade:</label>
-                        <input type="text" id="cidade">
+                        <input type="text" id="cidade" name="cidade" placeholder="Preenchida automaticamente pelo CEP">
                     </div>
                     <div class="campo campo-uf">
                         <label for="uf">UF:</label>
-                        <input type="text" id="uf" maxlength="2">
+                        <input type="text" id="uf" name="uf" maxlength="2" placeholder="UF">
+                    </div>
+                </div>
+
+                <div class="linha-campos">
+                    <div class="campo campo-uf">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" name="numero" maxlength="20" placeholder="Nº">
+                    </div>
+                    <div class="campo">
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" id="complemento" name="complemento" maxlength="150" placeholder="Apto, bloco, casa dos fundos...">
                     </div>
                 </div>
 
                 <div class="campo">
-                    <label for="mensagem">Número, Complemento e Observações:</label>
-                    <textarea id="mensagem" rows="4"></textarea>
+                    <label for="mensagem">Observações (opcional):</label>
+                    <textarea id="mensagem" name="observacoes" rows="3" placeholder="Ponto de referência, melhor horário..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-enviar">Enviar Pedido</button>
+                <button type="submit" class="btn-enviar" id="btn-enviar">Enviar Pedido</button>
+
+                <!-- Mensagem de feedback dinâmico via JS -->
                 <div id="mensagem-status" class="mensagem-status oculto"></div>
             </form>
         </section>
@@ -89,5 +122,7 @@
         <p>Ultragaz - O Gás Azul &copy; 2026</p>
         <p>Projeto acadêmico - DWS Colégio UNASP-HT</p>
     </footer>
+
 </body>
+
 </html>
