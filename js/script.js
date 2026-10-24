@@ -176,6 +176,56 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.disabled = false;
                 btn.textContent = 'Enviar Pedido';
             }
+            (function () {
+  var PRECOS = {
+    P13: 134.00,
+    P20: 245.00,
+    P45: 450.00
+  };
+
+  var selectProduto = document.getElementById('produto');
+  var inputQtd = document.getElementById('quantidade');
+  var resumo = document.getElementById('resumo-pedido');
+
+  function formatarBRL(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  function descobrirChave(texto) {
+    var m = texto.match(/P(13|20|45)/i);
+    return m ? 'P' + m[1] : null;
+  }
+
+  function atualizarResumo() {
+    var opcao = selectProduto.options[selectProduto.selectedIndex];
+    var chave = opcao ? descobrirChave(opcao.text) : null;
+
+    if (!chave || !(chave in PRECOS)) {
+      resumo.textContent = 'Selecione um produto para ver o valor.';
+      return;
+    }
+
+    var qtd = parseInt(inputQtd.value, 10);
+    if (isNaN(qtd) || qtd < 1) qtd = 1;
+
+    var unitario = PRECOS[chave];
+    var total = unitario * qtd;
+
+    if (qtd === 1) {
+      resumo.textContent = 'Valor: ' + formatarBRL(unitario);
+    } else {
+      resumo.textContent =
+        'Valor unitário: ' + formatarBRL(unitario) +
+        ' | Total (' + qtd + 'x): ' + formatarBRL(total);
+    }
+  }
+
+  if (selectProduto && inputQtd && resumo) {
+    selectProduto.addEventListener('change', atualizarResumo);
+    inputQtd.addEventListener('input', atualizarResumo);
+    atualizarResumo();
+  }
+})();
         });
     }
 });
